@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21 feb 2022 18:40:06 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="companiametro" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Lineas" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="lineas">
+        <id name="codLinea" type="int">
+            <column name="cod_linea"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="150" name="nombre"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="lineasEstacioneses" optimistic-lock="true" sort="unsorted" table="lineas_estaciones">
+            <key on-delete="noaction">
+                <column name="cod_linea" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.LineasEstaciones" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
